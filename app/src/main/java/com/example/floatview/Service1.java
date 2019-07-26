@@ -16,6 +16,7 @@ import android.view.View.OnTouchListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class Service1 extends Service {
     LinearLayout mFloatLayout;
@@ -89,14 +90,9 @@ public class Service1 extends Service {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                mFloatView.setVisibility(View.INVISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        mFloatView.setVisibility(View.VISIBLE);
-                    }
-                }, 10000);
-
+                Intent intent = new Intent(getApplicationContext(), Service1.class);
+                stopService(intent);
+                Toast.makeText(getApplicationContext(),"截屏服务已经关闭，停止截图！",Toast.LENGTH_LONG).show();
             }
         });
     }
