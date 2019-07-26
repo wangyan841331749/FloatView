@@ -19,11 +19,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
                 intent.setData(Uri.parse("package:" + getPackageName()));
                 startActivityForResult(intent,100);
+            }else {
+                Intent intent = new Intent(getApplicationContext(), Service1.class);
+                startService(intent);
+                finish();
             }
         }
-        Intent intent = new Intent(getApplicationContext(), Service1.class);
-        startService(intent);
-        finish();
+
     }
 
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Settings.canDrawOverlays(getApplicationContext())) {
                     Intent intent = new Intent(getApplicationContext(), Service1.class);
                     startService(intent);
+                    finish();
                 }else {
                     Toast.makeText(this,"ACTION_MANAGE_OVERLAY_PERMISSION权限已被拒绝",Toast.LENGTH_SHORT).show();;
                 }

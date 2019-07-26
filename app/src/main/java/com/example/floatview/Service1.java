@@ -42,9 +42,9 @@ public class Service1 extends Service {
         mWindowManager = (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            wmParams.type = LayoutParams.TYPE_APPLICATION_OVERLAY;
+            wmParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         }else {
-            wmParams.type = LayoutParams.TYPE_PHONE;
+            wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         }
         wmParams.format = PixelFormat.RGBA_8888;
 
