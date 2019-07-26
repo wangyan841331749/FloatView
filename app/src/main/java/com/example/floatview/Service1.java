@@ -1,5 +1,6 @@
 package com.example.floatview;
 
+import android.os.Build;
 import android.view.View;
 import android.app.Service;
 import android.content.Intent;
@@ -40,7 +41,11 @@ public class Service1 extends Service {
 
         mWindowManager = (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
 
-        wmParams.type = LayoutParams.TYPE_PHONE;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            wmParams.type = LayoutParams.TYPE_APPLICATION_OVERLAY;
+        }else {
+            wmParams.type = LayoutParams.TYPE_PHONE;
+        }
         wmParams.format = PixelFormat.RGBA_8888;
 
         wmParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE;
